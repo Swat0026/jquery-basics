@@ -156,6 +156,43 @@
         </div>
         <ul style="width: 100%;" class="list"></ul>
       </form>
+      <br>
+      <br>
+      <div class="products">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Color/Size</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>Duffle Bag</td>
+            <td>
+              <select id="duff" >
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+              </select>
+            </td>
+            <td id="rate">1000</td>
+          </tr>
+          <tr>
+            <td>T-Shirts</td>
+            <td>
+              <select id="tees" >
+                <option value="green">Green</option>
+                <option value="l-gray">Light Gray</option>
+              </select>
+            </td>
+            <td id="teesrate">1200</td>
+          </tr>
+        </table>
+      </div>
+
+
+
+
+
+
 
     <script>
       $(document).ready(function () {
@@ -306,6 +343,27 @@ function removeElements() {
     item.remove();
   });
 }
+
+
+$("#duff").change(()=>{
+      var value1 = $("#duff").val(); 
+      $("#rate").empty();
+      if(value1=="medium"){
+        $("#rate").append("3000");
+      }else {
+        $("#rate").append("1000");
+      }
+    });
+
+    $("#tees").change(()=>{
+      var value1 = $("#tees").val(); 
+      $("#teesrate").empty();
+      if(value1=="l-gray"){
+        $("#teesrate").append("3300");
+      }else {
+        $("#teesrate").append("1200");
+      }
+    });
        
        
 
