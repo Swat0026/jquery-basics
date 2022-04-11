@@ -68,6 +68,14 @@
     <button id="even">Color Even rows</button>
     <button id="odd">Color Odd rows</button>
 
+    <br>
+    <br>
+    <label for="">First name</label> <br>
+    <input type="text" id="first"><br>
+    <label for="">Last name</label><br>
+    <input type="text" id="last"><br> <br>
+    <button id="sub1" type="submit">Submit</button>
+
 
 
     <script>
@@ -98,6 +106,28 @@
                 $("#table tr:odd").css("background-color","dodgerblue")
             })
             
+        })
+
+       
+
+        $(document).ready(function(){
+            $("#sub1").click(function(){
+                var first=$("#first").val();
+                var last=$("#last").val();
+                if(first==""){
+                    alert("You left the First Name to Fill")
+                    $("#first").css("background-color","red")
+                }
+                else if (last==""){
+                    alert("You left the last Name to Fill")
+                    $("#last").css("background-color","red")
+
+                    
+                }else{
+                    console.log("submitted")
+                }
+            })
+
         })
 
 
