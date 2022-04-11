@@ -84,25 +84,57 @@
     <br />
     <br />
     <p id="output"></p>
-    <br>
-    <br>
+    <br />
+    <br />
     <div class="test">
-        <p>Car Details</p>
-        <p>
-        In real life, a car is an object. A car has properties like weight and color, and methods like start and stop. All cars have the same properties, but the property values differ from car to car.</p>
-        <p>All cars have the same methods, but the methods are performed at different times.</p>
-        </div>
-        <div class="demo">
-        <p>Food Details</p>
-        <p>The seven food categories are</p>
-        <p>Vegetables, Fruits, Grains, legumes, nuts and seeds, Meat and poultry, Fish and seafood, Dairy foods, Eggs</p>
-        <p>Food sources from animals, birds, seafood and some plants provide protein that is the building blocks of cells</p>
-        </div>
-        <div class="test">
-        <p>Mobile Details</p>
-        <p>There are three categories of mobile phones: basic phones, feature phones, and smartphones.</p>
-        <p>Smartphones are equipped with a QWERTY keypad.</p>
-        </div>
+      <p>Car Details</p>
+      <p>
+        In real life, a car is an object. A car has properties like weight and
+        color, and methods like start and stop. All cars have the same
+        properties, but the property values differ from car to car.
+      </p>
+      <p>
+        All cars have the same methods, but the methods are performed at
+        different times.
+      </p>
+    </div>
+    <div class="demo">
+      <p>Food Details</p>
+      <p>The seven food categories are</p>
+      <p>
+        Vegetables, Fruits, Grains, legumes, nuts and seeds, Meat and poultry,
+        Fish and seafood, Dairy foods, Eggs
+      </p>
+      <p>
+        Food sources from animals, birds, seafood and some plants provide
+        protein that is the building blocks of cells
+      </p>
+    </div>
+    <div class="test">
+      <p>Mobile Details</p>
+      <p>
+        There are three categories of mobile phones: basic phones, feature
+        phones, and smartphones.
+      </p>
+      <p>Smartphones are equipped with a QWERTY keypad.</p>
+    </div>
+    <br />
+    <br />
+    <div id="slider-controls">
+      <button id="slider-prev">Previous</button>
+      <button id="slider-next">Next</button>
+    </div>
+
+    <br />
+    <br />
+
+    <div id="slider-container">
+      <div id="slider-content">
+        <img class="slidera" src="img1.jpeg" width="400px" height="300px" />
+        <img class="sliderb" src="img2.jpeg" width="400px" height="300px" />
+        <img class="sliderc" src="img3.jpeg" width="400px" height="300px" />
+      </div>
+    </div>
 
     <script>
       $(document).ready(function () {
@@ -150,35 +182,50 @@
 
           var cart1 = {};
           cart1.Class1 = $("#class").val();
-          cart1.Board1 =$("#board").val();
+          cart1.Board1 = $("#board").val();
           cart1.Marks1 = $("#marks").val();
-          cart1.Division1=$("#division").val();
+          cart1.Division1 = $("#division").val();
           cart.push(cart1);
           console.log(cart);
-           
+
           var html =
             "<table><tr><th>Class</th><th>Board</th><th>Marks</th><th>Division</th></tr>";
           var html1 = "</table>";
-          cart.forEach(element => {
+          cart.forEach((element) => {
             html += `<tr><td>${element.Class1}</td><td >${element.Board1}</td><td> ${element.Marks1}</td><td>${element.Division1}</td></tr>`;
-          }); $("#output").empty();
-          $("#output").append(html+html1)
+          });
+          $("#output").empty();
+          $("#output").append(html + html1);
         });
 
-        $("#minus").click(function(){
-            var minus=$("#output").children();
-            minus.remove();
-        })
+        $("#minus").click(function () {
+          var minus = $("#output").children();
+          minus.remove();
+        });
+        setInterval(() => {
+          $(".test").children().first().css("color", "yellow");
+          $(".test").children().last().css("color", "violet");
+        }, 5000);
+
+        $("#slider-next").click(function () {
+          if ($(".slidera").is(":visible")) {
+            $(".slidera").hide(3000);
+          } else {
+            $(".sliderb").hide(3000);
+          }
+        });
+
+        $("#slider-prev").click(function () {
+          if ($(".slidera").not(":visible") && $(".sliderb").is(":visible")) {
+            $(".slidera").show(3000);
+          } else if (
+            $(".slidera").not(":visible") &&
+            $(".sliderb").not(":visible")
+          ) {
+            $(".sliderb").show(3000);
+          }
+        });
       });
-
-      $(document).ready(function(){
-          setInterval(() => {
-              $(".test").children().first().css("color","yellow");
-              $(".test").children().last().css("color","violet")
-              
-          }, 5000);
-      })
-
     </script>
   </body>
 </html>
