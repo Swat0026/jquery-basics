@@ -5,6 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+        .list {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 0 0 5px 5px;
+}
+.list-items {
+  padding: 10px 5px;
+}
+.list-items:hover {
+  background-color: #dddddd;
+}
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
@@ -137,6 +150,13 @@
       </div>
     </div>
 
+    <form autocomplete="off">
+        <div>
+          <input style="width: 100%;" type="text" id="input" placeholder="Type a name of a flower" />
+        </div>
+        <ul style="width: 100%;" class="list"></ul>
+      </form>
+
     <script>
       $(document).ready(function () {
         $("#sub").on("click", function () {
@@ -146,18 +166,16 @@
             $("#passmatch").html("Password didn't match").css("color", "red");
           else $("#passmatch").html("Password Match").css("color", "green");
         });
-      });
+      
 
-      $(document).ready(function () {
+      
         $("#even").click(function () {
           $("#table tr:even").css("background-color", "lightgray");
         });
         $("#odd").click(function () {
           $("#table tr:odd").css("background-color", "dodgerblue");
         });
-      });
 
-      $(document).ready(function () {
         $("#sub1").click(function () {
           var first = $("#first").val();
           var last = $("#last").val();
@@ -171,15 +189,16 @@
             console.log("submitted");
           }
         });
-      });
+      
 
-      $(document).ready(function () {
+
         var cart = [];
         $("#plus").click(function () {
           var Class = $("#class").val();
           var Board = $("#board").val();
           var Marks = $("#marks").val();
           var Division = $("#division").val();
+
 
           var cart1 = {};
           cart1.Class1 = $("#class").val();
@@ -226,7 +245,82 @@
             $(".sliderb").show(3000);
           }
         });
-      });
+
+        let names = [
+  "Lily",
+  "Daheliya",
+  "Marigold",
+  "Rose",
+  "Aster",
+  "Tulip",
+  "Orchid",
+  "Sunflower",
+  "Iris",
+  "Amanda",
+  "Amara",
+  "Sam",
+  "Danny",
+  
+];
+//Sort names in ascending order
+let sortedNames = names.sort();
+
+//reference
+let input = document.getElementById("input");
+
+//Execute function on keyup
+input.addEventListener("keyup", (e) => {
+  //loop through above array
+  //Initially remove all elements ( so if user erases a letter or adds new letter then clean previous outputs)
+  removeElements();
+  for (let i of sortedNames) {
+    //convert input to lowercase and compare with each string
+
+    if (
+      i.toLowerCase().startsWith(input.value.toLowerCase()) &&
+      input.value != ""
+    ) {
+      
+      let listItem = document.createElement("li");
+      
+      listItem.classList.add("list-items");
+      listItem.style.cursor = "pointer";
+      listItem.setAttribute("onclick", "displayNames('" + i + "')");
+      
+      let word = "<b>" + i.substr(0, input.value.length) + "</b>";
+      word += i.substr(input.value.length);
+      
+      listItem.innerHTML = word;
+      document.querySelector(".list").appendChild(listItem);
+    }
+  }
+});
+function displayNames(value) {
+  input.value = value;
+  removeElements();
+}
+function removeElements() {
+  
+  let items = document.querySelectorAll(".list-items");
+  items.forEach((item) => {
+    item.remove();
+  });
+}
+       
+       
+
+    
+        
+
+
+
+
+      
+      
+    
+});
+
+    
     </script>
   </body>
 </html>
