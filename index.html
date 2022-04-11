@@ -20,6 +20,56 @@
     <br>
     <br>
     <button type="submit" id="sub">Submit</button>
+     
+    <br>
+    <br>
+    <table border="1px" id="table">
+        <tr id="tab">
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr  id="tab">
+            <td>Alfred Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr  id="tab">
+            <td>Centro comercial Mocktezuma</td>
+            <td>Fransisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr  id="tab">
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+        <tr  id="tab">
+            <td>Island trading</td>
+            <td>Helen bennet</td>
+            <td>UK</td>
+        </tr>
+        <tr  id="tab">
+            <td>
+                Laughing Bacchus Winecellars
+            </td>
+            <td>Yoshi Tannamuri</td>
+            <td>Canada</td>
+        </tr>
+        <tr  id="tab">
+            <td>
+                Magazzinni Alimentari Riuniti
+            </td>
+            <td>Giovanni Riovalli </td>
+            <td>Italy</td>
+        </tr>
+    </table>
+    <br>
+    <button id="even">Color Even rows</button>
+    <button id="odd">Color Odd rows</button>
+
+
+
     <script>
         $(document).ready(function(){
             $("#sub").on('click',function(){
@@ -35,6 +85,28 @@
             })
 
         })
+
+
+        $(document).ready(function(){
+            $("#even").click(function(){
+                $("#table tr:even").css("background-color","lightgray")
+               
+
+
+            })
+            $("#odd").click(function(){
+                $("#table tr:odd").css("background-color","dodgerblue")
+            })
+            
+        })
+
+
+        
+
+
+
+
+
     </script>
   </body>
 </html>
