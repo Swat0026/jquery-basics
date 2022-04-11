@@ -11,132 +11,146 @@
     <label for="">Password</label>
     <input type="password" id="pass" />
     <br />
-    <br>
+    <br />
     <label for="">Confirm Password</label>
     <input type="password" id="conpass" />
     <br />
-    <br>
+    <br />
     <p id="passmatch"></p>
-    <br>
-    <br>
+    <br />
+    <br />
     <button type="submit" id="sub">Submit</button>
-     
-    <br>
-    <br>
+
+    <br />
+    <br />
     <table border="1px" id="table">
-        <tr id="tab">
-            <th>Company</th>
-            <th>Contact</th>
-            <th>Country</th>
-        </tr>
-        <tr  id="tab">
-            <td>Alfred Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr  id="tab">
-            <td>Centro comercial Mocktezuma</td>
-            <td>Fransisco Chang</td>
-            <td>Mexico</td>
-        </tr>
-        <tr  id="tab">
-            <td>Ernst Handel</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
-        </tr>
-        <tr  id="tab">
-            <td>Island trading</td>
-            <td>Helen bennet</td>
-            <td>UK</td>
-        </tr>
-        <tr  id="tab">
-            <td>
-                Laughing Bacchus Winecellars
-            </td>
-            <td>Yoshi Tannamuri</td>
-            <td>Canada</td>
-        </tr>
-        <tr  id="tab">
-            <td>
-                Magazzinni Alimentari Riuniti
-            </td>
-            <td>Giovanni Riovalli </td>
-            <td>Italy</td>
-        </tr>
+      <tr id="tab">
+        <th>Company</th>
+        <th>Contact</th>
+        <th>Country</th>
+      </tr>
+      <tr id="tab">
+        <td>Alfred Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+      </tr>
+      <tr id="tab">
+        <td>Centro comercial Mocktezuma</td>
+        <td>Fransisco Chang</td>
+        <td>Mexico</td>
+      </tr>
+      <tr id="tab">
+        <td>Ernst Handel</td>
+        <td>Roland Mendel</td>
+        <td>Austria</td>
+      </tr>
+      <tr id="tab">
+        <td>Island trading</td>
+        <td>Helen bennet</td>
+        <td>UK</td>
+      </tr>
+      <tr id="tab">
+        <td>Laughing Bacchus Winecellars</td>
+        <td>Yoshi Tannamuri</td>
+        <td>Canada</td>
+      </tr>
+      <tr id="tab">
+        <td>Magazzinni Alimentari Riuniti</td>
+        <td>Giovanni Riovalli</td>
+        <td>Italy</td>
+      </tr>
     </table>
-    <br>
+    <br />
     <button id="even">Color Even rows</button>
     <button id="odd">Color Odd rows</button>
 
-    <br>
-    <br>
-    <label for="">First name</label> <br>
-    <input type="text" id="first"><br>
-    <label for="">Last name</label><br>
-    <input type="text" id="last"><br> <br>
+    <br />
+    <br />
+    <label for="">First name</label> <br />
+    <input type="text" id="first" /><br />
+    <label for="">Last name</label><br />
+    <input type="text" id="last" /><br />
+    <br />
     <button id="sub1" type="submit">Submit</button>
 
-
+    <br />
+    <br />
+    <input type="text" id="class" placeholder="Enter Class or Degree" />
+    <input type="text" id="board" placeholder="Enter Board or University" />
+    <input type="number" id="marks" placeholder="Enter Marks" />
+    <input type="text" id="division" placeholder="Enter Division" />
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+    <br />
+    <br />
+    <p id="output"></p>
 
     <script>
-        $(document).ready(function(){
-            $("#sub").on('click',function(){
-                var password=$("#pass").val();
-                var confirmpassword=$("#conpass").val();
-                if(password != confirmpassword)
-                    $("#passmatch").html("Password didn't match").css("color", "red")
+      $(document).ready(function () {
+        $("#sub").on("click", function () {
+          var password = $("#pass").val();
+          var confirmpassword = $("#conpass").val();
+          if (password != confirmpassword)
+            $("#passmatch").html("Password didn't match").css("color", "red");
+          else $("#passmatch").html("Password Match").css("color", "green");
+        });
+      });
 
-                else
-                    $("#passmatch").html("Password Match").css("color","green")
+      $(document).ready(function () {
+        $("#even").click(function () {
+          $("#table tr:even").css("background-color", "lightgray");
+        });
+        $("#odd").click(function () {
+          $("#table tr:odd").css("background-color", "dodgerblue");
+        });
+      });
 
-                
-            })
+      $(document).ready(function () {
+        $("#sub1").click(function () {
+          var first = $("#first").val();
+          var last = $("#last").val();
+          if (first == "") {
+            alert("You left the First Name to Fill");
+            $("#first").css("background-color", "red");
+          } else if (last == "") {
+            alert("You left the last Name to Fill");
+            $("#last").css("background-color", "red");
+          } else {
+            console.log("submitted");
+          }
+        });
+      });
 
+      $(document).ready(function () {
+        var cart = [];
+        $("#plus").click(function () {
+          var Class = $("#class").val();
+          var Board = $("#board").val();
+          var Marks = $("#marks").val();
+          var Division = $("#division").val();
+
+          var cart1 = {};
+          cart1.Class1 = $("#class").val();
+          cart1.Board1 =$("#board").val();
+          cart1.Marks1 = $("#marks").val();
+          cart1.Division1=$("#division").val();
+          cart.push(cart1);
+          console.log(cart);
+           
+          var html =
+            "<table><tr><th>Class</th><th>Board</th><th>Marks</th><th>Division</th></tr>";
+          var html1 = "</table>";
+          cart.forEach(element => {
+            html += `<tr><td>${element.Class1}</td><td >${element.Board1}</td><td> ${element.Marks1}</td><td>${element.Division1}</td></tr>`;
+          }); $("#output").empty();
+          $("#output").append(html+html1)
+        });
+
+        $("#minus").click(function(){
+            var minus=$("#output").children();
+            minus.remove();
         })
-
-
-        $(document).ready(function(){
-            $("#even").click(function(){
-                $("#table tr:even").css("background-color","lightgray")
-               
-
-
-            })
-            $("#odd").click(function(){
-                $("#table tr:odd").css("background-color","dodgerblue")
-            })
-            
-        })
-
-       
-
-        $(document).ready(function(){
-            $("#sub1").click(function(){
-                var first=$("#first").val();
-                var last=$("#last").val();
-                if(first==""){
-                    alert("You left the First Name to Fill")
-                    $("#first").css("background-color","red")
-                }
-                else if (last==""){
-                    alert("You left the last Name to Fill")
-                    $("#last").css("background-color","red")
-
-                    
-                }else{
-                    console.log("submitted")
-                }
-            })
-
-        })
-
-
-        
-
-
-
-
-
+      });
     </script>
   </body>
 </html>
